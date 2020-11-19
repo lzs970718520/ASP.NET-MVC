@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@section head{
+    <script src="/Static/js/part/partadd.js"></script>
+    <script src="/Static/js/part/mydepty.js"></script>
+    <STYLE type="text/css">
+        .forminfo1 li {
+            margin-bottom: 15px;
+            clear: both;
+        }
+    </STYLE>
+}
+
+
+<script type="text/javascript" src="~/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+    function commitItem() {
+        var pname = $("#pname").val();
+        var premark = $("#premark").val();
+        var pid = $("#pid").val();
+        if (pname.length == 0) {
+            layer.tips('部门名称不能为空！', '#pname', { tips: [2, 'red'] });
+            $("#pname").focus();
+            return false;
+        }
+            //else if ($("#botao").val() > 0) {
+            //    layer.tips('对不起部门已存在！', '#pname', { tips: [2, 'red'] });
+            //    $("#pname").focus();
+            //    return false;
+            //}
+        else {
+            //var mypart = "dept.pname=" + pname + "&dept.premark=" + premark + "&dept.pid=" + pid;
+            var i = layer.load(0);
+            $.post('/Department/AddDpt', { pname: pname, premark: premark }, function (mydata) {
+                layer.close(i);
+                mydata = JSON.parse(mydata);
+                console.log(mydata);
+                if (mydata.status == 20009) {
+                    parent.layer.msg('添加成功！', { icon: 6, time: 3000 });
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引(真正的关 )
+                    parent.layer.close(index);
+                    //window.location.reload();
+                    getAll1(mydata.status, 1);
+                }
+                else {
+                    parent.layer.msg('添加失败', { icon: 2, time: 3000 });
+                }
+            }, 'json');
+        }
+    }
+</script>
+<body>
+    <div class="formbody">
+        <ul class="forminfo1">
+            <li>
+                <label>部门名称：</label>
+                <input name="dept.pname" type="text" id="pname" class="dfinput1" placeholder="请输入部门名称" />
+            </li>
+            <li>
+                <label>部门备注：</label>
+                <textarea name="dept.premark" cols="" rows="" class="textinput2" id="premark" placeholder="请输入部门备注"></textarea>
+            </li>
+            <li>
+                <label>&nbsp;</label>
+                <input type="button" onclick="commitItem()" class="btn" value="新增部门" />
+            </li>
+        </ul>
+    </div>
+    <input type="hidden" id="botao">
+</body>
+

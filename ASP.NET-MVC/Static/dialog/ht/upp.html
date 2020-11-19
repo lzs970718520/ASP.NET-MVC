@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css"></link>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/layer/layer.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/ajaxfileupload.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/ht/htupp.js"></script>
+		<STYLE type="text/css">
+.forminfo1 li {
+	margin-bottom: 15px;
+	clear: both;
+}
+</STYLE>
+	</head>
+	<body>
+	      
+		<div class="formbody">
+			<ul class="forminfo1">
+				<li>
+					<label>合同名称：</label>
+					<input name="sort.sname" type="text" id="hname" class="dfinput1" placeholder="请输入片区名称" />
+					<input type="hidden" name="htid" id="htid" value="<%=request.getParameter("htid") %>">
+				</li>
+				
+				<li style="padding-top: 10px; padding-left: 10px;">
+					<label>合同附件：</label>
+					<input type="file" class="dfinput2" style="height: 30px;" name="doc" id="doc" />
+				</li>
+				
+				<li>
+					<label>&nbsp;</label>
+					<input type="submit" class="btn" value="修改合同" />
+				</li>
+			</ul>
+		</div>
+		<input type="hidden" id="botao">
+	</body>
+</html>

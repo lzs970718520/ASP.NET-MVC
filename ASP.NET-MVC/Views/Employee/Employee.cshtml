@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <script src="/Static/js/jquery-1.8.3.js"></script>
+    <script src="/Static/layer/layer.js"></script>
+    <script src="/Static/js/emp/myemp.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/layui/layui.all.js"></script>
+    <script src="~/layui/layui.js"></script>
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/vue.js"></script>
+    <script>
+        GetAllPage();
+        layer.msg('员工信息');
+        showMsg(1);
+        function GetAllPage() {
+            $.ajax({
+                url: "/Employee/GetAllPage",
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == 20011) {
+                        layui.use('laypage', function () {
+                            var laypage = layui.laypage;
+
+                            //分页
+                            laypage.render({
+                                elem: 'laypage' //分页容器的id
+                                , count: data.allpages //总页数
+                                , skin: '#1E9FFF' //自定义选中色值
+                                //,skip: true //开启跳页
+                                , jump: function (obj, first) {
+                                    if (!first) {
+                                        showMsg(obj.curr);
+                                        layer.msg('第' + obj.curr + '页', { offset: 'b' });
+                                    } else {
+
+                                    }
+                                }
+                            });
+                        });
+                    } else {
+                        //
+                    }
+                    //location.reload(); //删除成功后再刷新
+                },
+                error: function (data) {
+                    layer.alert('错误', data.current);
+                }
+            });
+        }
+        function showMsg(current) {
+            //layui.use('layer', function () {
+            //    var layer = layui.layer;
+            //    layer.msg('你确定删除么？', {
+            //        time: 2000,//2秒自动关闭
+            //        btn: ['确定', '取消'],
+            //        yes: function (index) {
+            //            console.log(id);
+            //            layer.close(index);
+            //        }
+            //    });
+            //});
+            $.ajax({
+                url: "/Employee/ShowDepartment",
+                data: { 'current': current },
+                type: "Post",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $(".tablelist tbody tr").eq(0).siblings("tr").remove();
+                    $(".tablelist tbody").append('<template><todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item></template>')
+                    if (data.status == 20011) {
+                        console.log(data.list);
+                        Vue.component('todo-item', {
+                            props: ['todo'],
+                            template: '<tr>\
+                            <td> {{ todo.EID }}</td>\
+                            <td> {{ todo.pname }}</td>\
+                            <td> {{ todo.JNAME }}</td>\
+                            <td> {{ todo.EREALNAME }}</td>\
+                            <td> {{ todo.ENAME }}</td>\
+                            <td> {{ todo.ETEL }}</td>\
+                            <td> {{ todo.EADDRESS }}</td>\
+                            <td> {{ todo.EFLAG }}</td></tr>'
+                        })
+                        new Vue({
+                            el: ".tablelist",
+                            data: {
+                                groceryList: data.list
+                            }
+                        })
+                    } else {
+                        //
+                    }
+                    //location.reload(); //删除成功后再刷新
+                },
+                error: function (data) {
+                    layer.alert('错误', data.current);
+                }
+            });
+        }
+    </script>
+    <SCRIPT type="text/javascript">
+        //////////////权限控制！！！//////////////
+        //var $userLevel=parseInt("");//获取登陆者的权限等级
+        var $webName = "/pro";
+                            //$(function(){
+                            //	var tools=$(".tools");
+                            //	if($userLevel!=-1){
+                            //		tools.hide();
+                            //	}
+                            //});
+    </SCRIPT>
+</head>
+
+<body>
+    <!-- 位置信息 -->
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="/Static/main/right.jsp">首页</a></li>
+            <li><a href="/Static/emp/all.jsp">员工管理</a></li>
+            <li><a href="/Static/emp/all.jsp">员工内容</a></li>
+        </ul>
+    </div>
+    <!-- 内容表格信息 -->
+    <div class="rightinfo">
+        <div class="tools">
+            <ul class="toolbar">
+                <li class="addPart">
+                    <span><img src="/Static/images/t01.png" /> </span>添加
+                </li>
+            </ul>
+            <ul class="toolbar">
+                <li class="delPart">
+                    <span><img src="/Static/images/t01.png" /> </span>已经删除员工
+                </li>
+            </ul>
+
+            <ul class="toolbar">
+                <li class="backPart" style="display: none;">
+                    <span><img src="/Static/images/t01.png" /> </span>查询在职员工
+                </li>
+            </ul>
+        </div>
+        <div>
+            <table class="tablelist">
+                <tr>
+                    <th align='center'>编号</th>
+                    <th align='center'>所在部门</th>
+                    <th align='center'>角色</th>
+                    <th align='center'>真实姓名</th>
+                    <th align='center'>账号</th>
+                    <th align='center'>电话</th>
+                    <th align='center'>地址</th>
+                    <th>删除员工</th>
+                </tr>
+            </table>
+        </div>
+
+        <div style="margin:30px auto; text-align:center" id="laypage"></div>
+
+        <div class="pagin">
+        </div>
+    </div>
+</body>
+</html>
+
+@*<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/vue.js"></script>
+    <script>
+        //axios.post('/Employee/ShowDepartment', { current: 1})
+        //    .then(function (data) {
+        //        if (data.data.status == 20011) {
+        //            console.log(data.data.list);
+        //            Vue.component('todo-item', {
+        //                props: ['todo'],
+        //                template: '<tr>\
+        //                    <td> {{ todo.EID }}</td>\
+        //                    <td> {{ todo.pname }}</td>\
+        //                    <td> {{ todo.JNAME }}</td>\
+        //                    <td> {{ todo.EREALNAME }}</td>\
+        //                    <td> {{ todo.ENAME }}</td>\
+        //                    <td> {{ todo.ETEL }}</td>\
+        //                    <td> {{ todo.EADDRESS }}</td>\
+        //                    <td> {{ todo.EFLAG }}</td>\
+        //                    <td> {{ todo.EADDRESS }}</td></tr> '
+        //            })
+        //            new Vue({
+        //                el: ".tablelist",
+        //                data: {
+        //                    groceryList: data.data.list
+        //                }
+        //            })
+        //        } else {
+        //            //
+        //        }
+        //    })
+    </script>*@

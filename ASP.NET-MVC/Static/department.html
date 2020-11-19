@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>无标题文档</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"></link>
+		<script src="js/jquery-1.8.3.js"></script>
+		<script src="layer/layer.js"></script>
+		<script src="js/part/mydepty.js"></script>
+		<SCRIPT type="text/javascript">
+		//////////////权限控制！！！//////////////
+		//var $userLevel=parseInt("");//获取登陆者的权限等级
+		var $webName="/pro";
+		//$(function(){
+		//	var tools=$(".tools");
+		//	if($userLevel!=-1){
+		//		tools.hide();
+		//	}
+		//});
+</SCRIPT>
+	</head>
+	<body>
+		<!-- 位置信息 -->
+		<div class="place">
+			<span>位置：</span>
+			<ul class="placeul">
+				<li><a href="main/right.jsp">首页</a></li>
+				<li><a href="part/all.jsp">部门管理</a></li>
+				<li><a href="part/all.jsp">基本内容</a></li>
+			</ul>
+		</div>
+		<!-- 内容表格信息 -->
+		<div class="rightinfo">
+			<div class="tools">
+				<ul class="toolbar">
+					<li class="addPart">
+						<span><img src="images/t01.png" /> </span>添加
+					</li>
+				</ul>
+				<ul class="toolbar">
+					<li class="delPart">
+						<span><img src="images/t01.png" /> </span>已经撤销部门
+					</li>
+				</ul>
+				
+				<ul class="toolbar" >
+					<li class="backPart" style="display: none;">
+						<span><img src="images/t01.png" /> </span>查询部门
+					</li>
+				</ul>
+			</div>
+			
+			<table class="tablelist" style="text-align: center;"><thead><tr align="center"><th width="10%" align="center">编号</th><th width="25%" align="center">部门名称</th><th width="35%" align="center">部门备注</th><th width="15%" align="center">修改</th><th width="15%">撤销部门</th></tr></thead>
+			<tbody><tr><td>1</td><td>房管一部</td>
+			<td>主要负责房源信息录入</td>
+			<td><a href="#" class="backdel"></a></td>
+			<td><a href="#" class="backdel">撤销部门</a></td>
+			</tr><tr><td>2</td><td>房管二部</td>
+			<td>主要负责房子出租</td>
+			<td><a href="#" class="backdel">恢复部门</a>
+			<td><a href="#" class="backdel"></a></td>
+			</td></tr>
+			<tr><td>3</td><td>房管三部</td>
+			<td>主要负责房子出租</td>
+			<td><a href="#" class="backdel">恢复部门</a></td>
+			<td><a href="#" class="backdel"></a></td>
+			</tr></tbody></table>
+			<div class="pagin">
+				<div class="message">统计：共<i class="blue"> 3</i> 条记录， 共<i class="blue"> 1 </i>页，当前显示第&nbsp;<i class="blue">1/1&nbsp;</i>页<ul class="paginList"><li class="paginItem"><a href="javascript:void(0)" class="first">首页</a></li><li class="paginItem"><a href="javascript:void(0)" class="up">上一页</a></li><li class="paginItem"><a href="javascript:void(0)" class="next">下一页</a></li><li class="paginItem"><a href="javascript:void(0)" class="last">尾页</a></li></ul><span style="float: right;margin-top:8px;"> 转到第 <select class="select"><option value="1" selected="selected">1</option></select> 页</span></div>
+			</div>
+		</div>
+	</body>
+</html>

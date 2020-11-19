@@ -1,0 +1,5 @@
+# Rules in this file were initially inferred by Visual Studio IntelliCode from the E:\visual studio\vs2015\项目\ASP.NET-MVC\ASP.NET-MVC\Static\js\house\ codebase based on best match to current usage at 2020-11-14
+# You can modify the rules from these initially generated values to suit your own policies
+# You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+[*.cs]
+

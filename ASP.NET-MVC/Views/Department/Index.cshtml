@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@section head{
+    <script src="/Static/js/part/mydepty.js"></script>
+    <SCRIPT type="text/javascript">
+        //////////////权限控制！！！//////////////
+        //var $userLevel=parseInt("");//获取登陆者的权限等级
+        var $webName = "/pro";
+        //$(function(){
+        //	var tools=$(".tools");
+        //	if($userLevel!=-1){
+        //		tools.hide();
+        //	}
+        //});
+
+
+    </SCRIPT>
+}
+
+<!DOCTYPE html>
+
+<script type="text/javascript" src="~/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+    //function getAll1(current, flag) {
+    current = 1;
+    //pflag = flag;
+    flag = 0;
+
+    $(".tablelist").empty();
+
+    if (flag == 0) {
+        $(".tablelist").append("<thead><tr align='center'><th width='10%' align='center'>编号</th><th width='25%' align='center'>部门名称</th><th width='35%' align='center'>部门备注</th><th width='15%' align='center'>修改</th><th width='15%'>撤销部门</th></tr></thead>");
+    }
+    else {
+        $(".tablelist").append("<thead><tr align='center'><th width='10%' align='center'>编号</th><th width='25%' align='center'>部门名称</th><th width='35%' align='center'>部门备注</th><th width='15%' align='center'>恢复部门</th></tr></thead>");
+    }
+
+    $.ajax({
+        url: '/Department/ShowMsg',
+        dataType: 'json',
+        data: { pflag: flag, current: current },
+        type: 'post',
+        success: function (mydata) {
+            console.log(mydata);
+            mydata = JSON.parse(mydata);
+            console.log(mydata);
+            console.log(mydata.pagelist);
+            if (mydata.status == "20006") {
+                window.location.href = "../error.jsp";
+            }
+            else {
+                //分页需要的参数
+                up = mydata.up;
+                next = mydata.next;
+                allpages = mydata.allpages;
+                current = mydata.current;
+                allcount = mydata.allcount;
+                $.each(mydata.pagelist, function (index, item) {
+                    //if (index != null) {
+
+                    var srt = '<tr><td>' + item["PID"] + '</td>';
+                    srt += '<td>' + item["PNAME"] + '</td>';
+                    srt += '<td>' + item["PREMARK"] + '</td>';
+                    if (item["PFLAG"] == 0) {
+                        srt += '<td><a href="#" onclick="getHuiFu(' + current + ',' + item["PID"] + ')" class="backdel">恢复部门</a> <td><a href="#" class="backdel"></a></td> </td>';
+                    } else {
+                        srt += '<td><a href="#" class="backdel"></a></td> <td><a href="#" onclick="mydel(' + current + ',' + item["PID"] + ')" class="backdel">撤销部门</a></td>';
+                    }
+
+
+                    $(".tablelist").append(srt);
+                    //}
+
+                });
+                //加尾巴
+
+                $(".pagin > .message").empty().append('统计：共<i class="blue"> ' + mydata.allcount + '</i> 条记录， 共<i class="blue"> ' + mydata.allpages + ' </i>页，当前显示第&nbsp;<i class="blue">' + mydata.current + '/' + mydata.allpages + '&nbsp;</i>页');
+                $(".pagin > .message").append('<ul class="paginList">');
+                $(".paginList").append('<li onclick="getAll1(9999,1)" class="paginItem"><a href="javascript:void(0)" class="first">首页</a></li>');
+                $(".paginList").append('<li onclick="getAll1(9999,' + (mydata.current - 1) + ')" class="paginItem"><a href="javascript:void(0)" class="up">上一页</a></li>');
+                $(".paginList").append('<li onclick="getAll1(9999,' + (mydata.current + 1) + ')"  class="paginItem"><a href="javascript:void(0)" class="next">下一页</a></li>');
+                $(".paginList").append('<li onclick="getAll1(9999,' + mydata.allpages + ')" class="paginItem"><a href="javascript:void(0)" class="last">尾页</a></li>');
+                $(".pagin > .message").append('<SPAN style="float: right;margin-top:8px;"> 转到第 <select class=select></select> 页</SPAN>');
+
+
+
+                //给下拉框赋值
+                for (var i = 1; i <= allpages; i++) {
+                    $(".select").append("<option value='" + i + "'>" + i + "</option>");
+                }
+                //你当前正处在哪一页，就应该让几选中
+                //你当前正处在哪一页，就应该让几选中
+                $(".select option:eq(" + (parseInt(current) - 1) + ")").attr('selected', true);
+
+
+            }
+        }
+    });
+    //}
+</script>
+<!-- 位置信息 -->
+<div class="place">
+    <span>位置：</span>
+    <ul class="placeul">
+        <li><a href="/Static/main/right.jsp">首页</a></li>
+        <li><a href="/Static/part/all.jsp">部门管理</a></li>
+        <li><a href="/Static/part/all.jsp">基本内容</a></li>
+    </ul>
+</div>
+<!-- 内容表格信息 -->
+<div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+            <li class="addPart">
+                <span><img src="/Static/images/t01.png" /> </span>添加
+            </li>
+        </ul>
+        <ul class="toolbar">
+            <li class="delPart">
+                <span><img src="/Static/images/t01.png" /> </span>已经撤销部门
+            </li>
+        </ul>
+
+        <ul class="toolbar">
+            <li class="backPart" style="display: none;">
+                <span><img src="/Static/images/t01.png" /> </span>查询部门
+            </li>
+        </ul>
+    </div>
+
+    <table class="tablelist" style="text-align: center;">
+        <thead><tr align="center"><th width="10%" align="center">编号</th><th width="25%" align="center">部门名称</th><th width="35%" align="center">部门备注</th><th width="15%" align="center">修改</th><th width="15%">撤销部门</th></tr></thead>
+        @*<tbody>
+                <tr>
+                    <td>1</td>
+                    <td>房管一部</td>
+                    <td>主要负责房源信息录入</td>
+                    <td><a href="#" class="backdel"></a></td>
+                    <td><a href="#" class="backdel">撤销部门</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>房管二部</td>
+                    <td>主要负责房子出租</td>
+                    <td><a href="#" class="backdel">恢复部门</a>
+                    <td><a href="#" class="backdel"></a></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>房管三部</td>
+                    <td>主要负责房子出租</td>
+                    <td><a href="#" class="backdel">恢复部门</a></td>
+                    <td><a href="#" class="backdel"></a></td>
+                </tr>
+            </tbody>*@
+    </table>
+    <div class="pagin">
+        <div class="message">统计：共<i class="blue"> 3</i> 条记录， 共<i class="blue"> 1 </i>页，当前显示第&nbsp;<i class="blue">1/1&nbsp;</i>页<ul class="paginList"><li class="paginItem"><a href="javascript:void(0)" class="first">首页</a></li><li class="paginItem"><a href="javascript:void(0)" class="up">上一页</a></li><li class="paginItem"><a href="javascript:void(0)" class="next">下一页</a></li><li class="paginItem"><a href="javascript:void(0)" class="last">尾页</a></li></ul><span style="float: right;margin-top:8px;"> 转到第 <select class="select"><option value="1" selected="selected">1</option></select> 页</span></div>
+    </div>
+</div>

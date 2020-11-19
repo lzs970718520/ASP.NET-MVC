@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Page.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Static/css/sapar.css" />
+    <link rel="stylesheet" type="text/css" href="~/Static/css/system_index.css" />
+    <script src="~/Static/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="~/Static/js/jquery.messager.js"></script>
+    <script src="~/Static/layer/layer.js"></script>
+
+    @RenderSection("head", false)
+</head>
+<body>
+    <div>
+        @RenderBody()
+
+        @RenderSection("footer",false)
+    </div>
+</body>
+</html>

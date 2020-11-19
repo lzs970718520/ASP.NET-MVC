@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19342BF0-256C-4182-A05D-178DE88900EA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ASP.NET_MVC</RootNamespace>
+    <AssemblyName>ASP.NET-MVC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="jquery-3.4.1.js" />
+    <Content Include="layui\css\layui.css" />
+    <Content Include="layui\css\layui.mobile.css" />
+    <Content Include="layui\css\modules\code.css" />
+    <Content Include="layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="layui\css\modules\layer\default\icon.png" />
+    <Content Include="layui\css\modules\layer\default\layer.css" />
+    <Content Include="layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="layui\font\iconfont.svg" />
+    <Content Include="layui\images\face\0.gif" />
+    <Content Include="layui\images\face\1.gif" />
+    <Content Include="layui\images\face\10.gif" />
+    <Content Include="layui\images\face\11.gif" />
+    <Content Include="layui\images\face\12.gif" />
+    <Content Include="layui\images\face\13.gif" />
+    <Content Include="layui\images\face\14.gif" />
+    <Content Include="layui\images\face\15.gif" />
+    <Content Include="layui\images\face\16.gif" />
+    <Content Include="layui\images\face\17.gif" />
+    <Content Include="layui\images\face\18.gif" />
+    <Content Include="layui\images\face\19.gif" />
+    <Content Include="layui\images\face\2.gif" />
+    <Content Include="layui\images\face\20.gif" />
+    <Content Include="layui\images\face\21.gif" />
+    <Content Include="layui\images\face\22.gif" />
+    <Content Include="layui\images\face\23.gif" />
+    <Content Include="layui\images\face\24.gif" />
+    <Content Include="layui\images\face\25.gif" />
+    <Content Include="layui\images\face\26.gif" />
+    <Content Include="layui\images\face\27.gif" />
+    <Content Include="layui\images\face\28.gif" />
+    <Content Include="layui\images\face\29.gif" />
+    <Content Include="layui\images\face\3.gif" />
+    <Content Include="layui\images\face\30.gif" />
+    <Content Include="layui\images\face\31.gif" />
+    <Content Include="layui\images\face\32.gif" />
+    <Content Include="layui\images\face\33.gif" />
+    <Content Include="layui\images\face\34.gif" />
+    <Content Include="layui\images\face\35.gif" />
+    <Content Include="layui\images\face\36.gif" />
+    <Content Include="layui\images\face\37.gif" />
+    <Content Include="layui\images\face\38.gif" />
+    <Content Include="layui\images\face\39.gif" />
+    <Content Include="layui\images\face\4.gif" />
+    <Content Include="layui\images\face\40.gif" />
+    <Content Include="layui\images\face\41.gif" />
+    <Content Include="layui\images\face\42.gif" />
+    <Content Include="layui\images\face\43.gif" />
+    <Content Include="layui\images\face\44.gif" />
+    <Content Include="layui\images\face\45.gif" />
+    <Content Include="layui\images\face\46.gif" />
+    <Content Include="layui\images\face\47.gif" />
+    <Content Include="layui\images\face\48.gif" />
+    <Content Include="layui\images\face\49.gif" />
+    <Content Include="layui\images\face\5.gif" />
+    <Content Include="layui\images\face\50.gif" />
+    <Content Include="layui\images\face\51.gif" />
+    <Content Include="layui\images\face\52.gif" />
+    <Content Include="layui\images\face\53.gif" />
+    <Content Include="layui\images\face\54.gif" />
+    <Content Include="layui\images\face\55.gif" />
+    <Content Include="layui\images\face\56.gif" />
+    <Content Include="layui\images\face\57.gif" />
+    <Content Include="layui\images\face\58.gif" />
+    <Content Include="layui\images\face\59.gif" />
+    <Content Include="layui\images\face\6.gif" />
+    <Content Include="layui\images\face\60.gif" />
+    <Content Include="layui\images\face\61.gif" />
+    <Content Include="layui\images\face\62.gif" />
+    <Content Include="layui\images\face\63.gif" />
+    <Content Include="layui\images\face\64.gif" />
+    <Content Include="layui\images\face\65.gif" />
+    <Content Include="layui\images\face\66.gif" />
+    <Content Include="layui\images\face\67.gif" />
+    <Content Include="layui\images\face\68.gif" />
+    <Content Include="layui\images\face\69.gif" />
+    <Content Include="layui\images\face\7.gif" />
+    <Content Include="layui\images\face\70.gif" />
+    <Content Include="layui\images\face\71.gif" />
+    <Content Include="layui\images\face\8.gif" />
+    <Content Include="layui\images\face\9.gif" />
+    <Content Include="layui\layui.all.js" />
+    <Content Include="layui\layui.js" />
+    <Content Include="layui\lay\modules\carousel.js" />
+    <Content Include="layui\lay\modules\code.js" />
+    <Content Include="layui\lay\modules\colorpicker.js" />
+    <Content Include="layui\lay\modules\element.js" />
+    <Content Include="layui\lay\modules\flow.js" />
+    <Content Include="layui\lay\modules\form.js" />
+    <Content Include="layui\lay\modules\jquery.js" />
+    <Content Include="layui\lay\modules\laydate.js" />
+    <Content Include="layui\lay\modules\layedit.js" />
+    <Content Include="layui\lay\modules\layer.js" />
+    <Content Include="layui\lay\modules\laypage.js" />
+    <Content Include="layui\lay\modules\laytpl.js" />
+    <Content Include="layui\lay\modules\mobile.js" />
+    <Content Include="layui\lay\modules\rate.js" />
+    <Content Include="layui\lay\modules\slider.js" />
+    <Content Include="layui\lay\modules\table.js" />
+    <Content Include="layui\lay\modules\transfer.js" />
+    <Content Include="layui\lay\modules\tree.js" />
+    <Content Include="layui\lay\modules\upload.js" />
+    <Content Include="layui\lay\modules\util.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Static\!!!!!readme!!!!!!.txt" />
+    <Content Include="Static\area.html" />
+    <Content Include="Static\backup.html" />
+    <Content Include="Static\billing.html" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap-theme.css" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap.css" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap.min.css" />
+    <Content Include="Static\bootstrap-dist\css\dashboard.css" />
+    <Content Include="Static\bootstrap-dist\css\LoginCss.css" />
+    <Content Include="Static\bootstrap-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Static\bootstrap-dist\js\bootstrap.js" />
+    <Content Include="Static\bootstrap-dist\js\bootstrap.min.js" />
+    <Content Include="Static\bootstrap-dist\js\jquery-1.11.3.js" />
+    <Content Include="Static\bootstrap-dist\js\npm.js" />
+    <Content Include="Static\changePwd.html" />
+    <Content Include="Static\contract.html" />
+    <Content Include="Static\cost.html" />
+    <Content Include="Static\css\jquery.treeview.css" />
+    <Content Include="Static\css\sapar.css" />
+    <Content Include="Static\css\screen.css" />
+    <Content Include="Static\css\select.css" />
+    <Content Include="Static\css\style.css" />
+    <Content Include="Static\css\system_index.css" />
+    <Content Include="Static\customer.html" />
+    <Content Include="Static\dashbord.html" />
+    <Content Include="Static\department.html" />
+    <Content Include="Static\dialog\area\add.html" />
+    <Content Include="Static\dialog\area\all.html" />
+    <Content Include="Static\dialog\area\delall.html" />
+    <Content Include="Static\dialog\area\upp.html" />
+    <Content Include="Static\dialog\biao\add.html" />
+    <Content Include="Static\dialog\biao\all.html" />
+    <Content Include="Static\dialog\biao\upp.html" />
+    <Content Include="Static\dialog\bs\add.html" />
+    <Content Include="Static\dialog\bs\all.html" />
+    <Content Include="Static\dialog\bs\upp.html" />
+    <Content Include="Static\dialog\custom\add.html" />
+    <Content Include="Static\dialog\custom\all.html" />
+    <Content Include="Static\dialog\custom\upp.html" />
+    <Content Include="Static\dialog\djrz\add.html" />
+    <Content Include="Static\dialog\djrz\all.html" />
+    <Content Include="Static\dialog\djrz\upp.html" />
+    <Content Include="Static\dialog\djsf\add.html" />
+    <Content Include="Static\dialog\djsf\all.html" />
+    <Content Include="Static\dialog\djsf\upp.html" />
+    <Content Include="Static\dialog\djtf\add.html" />
+    <Content Include="Static\dialog\djtf\all.html" />
+    <Content Include="Static\dialog\djtf\upp.html" />
+    <Content Include="Static\dialog\emp\add.html" />
+    <Content Include="Static\dialog\emp\all.html" />
+    <Content Include="Static\dialog\emp\delall.html" />
+    <Content Include="Static\dialog\emp\upp.html" />
+    <Content Include="Static\dialog\house\add.html" />
+    <Content Include="Static\dialog\house\all.html" />
+    <Content Include="Static\dialog\house\mylook.html" />
+    <Content Include="Static\dialog\house\upp.html" />
+    <Content Include="Static\dialog\ht\add.html" />
+    <Content Include="Static\dialog\ht\all.html" />
+    <Content Include="Static\dialog\ht\upp.html" />
+    <Content Include="Static\dialog\myjs\add.html" />
+    <Content Include="Static\dialog\myjs\all.html" />
+    <Content Include="Static\dialog\myjs\delall.html" />
+    <Content Include="Static\dialog\myjs\upp.html" />
+    <Content Include="Static\dialog\part\add.html" />
+    <Content Include="Static\dialog\part\all.html" />
+    <Content Include="Static\dialog\part\delall.html" />
+    <Content Include="Static\dialog\part\upp.html" />
+    <Content Include="Static\dialog\shour\add.html" />
+    <Content Include="Static\dialog\shour\all.html" />
+    <Content Include="Static\dialog\shour\upp.html" />
+    <Content Include="Static\dialog\sort\add.html" />
+    <Content Include="Static\dialog\sort\all.html" />
+    <Content Include="Static\dialog\sort\upp.html" />
+    <Content Include="Static\dialog\zc\add.html" />
+    <Content Include="Static\dialog\zc\addok.html" />
+    <Content Include="Static\dialog\zc\all.html" />
+    <Content Include="Static\dialog\zc\look.html" />
+    <Content Include="Static\dialog\zc\upp.html" />
+    <Content Include="Static\dialog\zhichu\add.html" />
+    <Content Include="Static\dialog\zhichu\all.html" />
+    <Content Include="Static\dialog\zhichu\upp.html" />
+    <Content Include="Static\employee.html" />
+    <Content Include="Static\footer.html" />
+    <Content Include="Static\houseInfo.html" />
+    <Content Include="Static\houseType.html" />
+    <Content Include="Static\houseTypeReport.html" />
+    <Content Include="Static\houseTypeTree.html" />
+    <Content Include="Static\images\001.jpg" />
+    <Content Include="Static\images\2.jpg" />
+    <Content Include="Static\images\404.png" />
+    <Content Include="Static\images\add.png" />
+    <Content Include="Static\images\btnbg.png" />
+    <Content Include="Static\images\btnbg1.png" />
+    <Content Include="Static\images\btnbg2.png" />
+    <Content Include="Static\images\btnbg3.png" />
+    <Content Include="Static\images\btnbg4.png" />
+    <Content Include="Static\images\buttonbg.png" />
+    <Content Include="Static\images\bz00.jpg" />
+    <Content Include="Static\images\bz01.jpg" />
+    <Content Include="Static\images\bz02.jpg" />
+    <Content Include="Static\images\c01.png" />
+    <Content Include="Static\images\c02.png" />
+    <Content Include="Static\images\c03.png" />
+    <Content Include="Static\images\cbg.png" />
+    <Content Include="Static\images\clist.png" />
+    <Content Include="Static\images\close.png" />
+    <Content Include="Static\images\close1.png" />
+    <Content Include="Static\images\cloud.png" />
+    <Content Include="Static\images\d01.png" />
+    <Content Include="Static\images\d02.png" />
+    <Content Include="Static\images\d03.png" />
+    <Content Include="Static\images\d04.png" />
+    <Content Include="Static\images\d05.png" />
+    <Content Include="Static\images\d06.png" />
+    <Content Include="Static\images\d07.png" />
+    <Content Include="Static\images\diskbg.png" />
+    <Content Include="Static\images\dp.png" />
+    <Content Include="Static\images\f01.png" />
+    <Content Include="Static\images\f02.png" />
+    <Content Include="Static\images\f03.png" />
+    <Content Include="Static\images\f04.png" />
+    <Content Include="Static\images\f05.png" />
+    <Content Include="Static\images\f06.png" />
+    <Content Include="Static\images\file.gif" />
+    <Content Include="Static\images\fjt.png" />
+    <Content Include="Static\images\folder-closed.gif" />
+    <Content Include="Static\images\folder.gif" />
+    <Content Include="Static\images\gray_03.gif" />
+    <Content Include="Static\images\gray_2_03.gif" />
+    <Content Include="Static\images\help.png" />
+    <Content Include="Static\images\i01.png" />
+    <Content Include="Static\images\i02.png" />
+    <Content Include="Static\images\i03.png" />
+    <Content Include="Static\images\i04.png" />
+    <Content Include="Static\images\i05.png" />
+    <Content Include="Static\images\i06.png" />
+    <Content Include="Static\images\i07.png" />
+    <Content Include="Static\images\i08.png" />
+    <Content Include="Static\images\i09.png" />
+    <Content Include="Static\images\iadd.png" />
+    <Content Include="Static\images\ibtnbg.png" />
+    <Content Include="Static\images\ico01.png" />
+    <Content Include="Static\images\ico02.png" />
+    <Content Include="Static\images\ico03.png" />
+    <Content Include="Static\images\ico04.png" />
+    <Content Include="Static\images\ico05.png" />
+    <Content Include="Static\images\ico06.png" />
+    <Content Include="Static\images\icon01.png" />
+    <Content Include="Static\images\icon02.png" />
+    <Content Include="Static\images\icon03.png" />
+    <Content Include="Static\images\icon04.png" />
+    <Content Include="Static\images\icon05.png" />
+    <Content Include="Static\images\icon06.png" />
+    <Content Include="Static\images\icon07.png" />
+    <Content Include="Static\images\icon08.png" />
+    <Content Include="Static\images\icon09.png" />
+    <Content Include="Static\images\icon10.png" />
+    <Content Include="Static\images\icon11.png" />
+    <Content Include="Static\images\icon12.png" />
+    <Content Include="Static\images\icon13.png" />
+    <Content Include="Static\images\icon14.png" />
+    <Content Include="Static\images\icon15.png" />
+    <Content Include="Static\images\icon16.png" />
+    <Content Include="Static\images\icon17.png" />
+    <Content Include="Static\images\icon18.png" />
+    <Content Include="Static\images\img01.png" />
+    <Content Include="Static\images\img02.png" />
+    <Content Include="Static\images\img03.png" />
+    <Content Include="Static\images\img04.png" />
+    <Content Include="Static\images\img05.png" />
+    <Content Include="Static\images\img06.png" />
+    <Content Include="Static\images\img07.png" />
+    <Content Include="Static\images\img08.png" />
+    <Content Include="Static\images\img09.png" />
+    <Content Include="Static\images\img10.png" />
+    <Content Include="Static\images\img11.png" />
+    <Content Include="Static\images\img12.png" />
+    <Content Include="Static\images\img13.png" />
+    <Content Include="Static\images\img14.png" />
+    <Content Include="Static\images\img15.png" />
+    <Content Include="Static\images\index_32.gif" />
+    <Content Include="Static\images\info.png" />
+    <Content Include="Static\images\inputbg.gif" />
+    <Content Include="Static\images\itabbg.png" />
+    <Content Include="Static\images\itabbg1.png" />
+    <Content Include="Static\images\jszc.png" />
+    <Content Include="Static\images\jtx.png" />
+    <Content Include="Static\images\l01.png" />
+    <Content Include="Static\images\l02.png" />
+    <Content Include="Static\images\l03.png" />
+    <Content Include="Static\images\l04.png" />
+    <Content Include="Static\images\lbg.png" />
+    <Content Include="Static\images\lbg1.png" />
+    <Content Include="Static\images\lc00.png" />
+    <Content Include="Static\images\lc01.png" />
+    <Content Include="Static\images\lc02.png" />
+    <Content Include="Static\images\lc03.png" />
+    <Content Include="Static\images\lc04.png" />
+    <Content Include="Static\images\lc05.png" />
+    <Content Include="Static\images\lc06.png" />
+    <Content Include="Static\images\leftico.png" />
+    <Content Include="Static\images\leftico01.png" />
+    <Content Include="Static\images\leftico02.png" />
+    <Content Include="Static\images\leftico03.png" />
+    <Content Include="Static\images\leftico04.png" />
+    <Content Include="Static\images\leftline.gif" />
+    <Content Include="Static\images\leftmenubg.gif" />
+    <Content Include="Static\images\lefttop.gif" />
+    <Content Include="Static\images\libg.png" />
+    <Content Include="Static\images\light.png" />
+    <Content Include="Static\images\light1.png" />
+    <Content Include="Static\images\line.gif" />
+    <Content Include="Static\images\line1.png" />
+    <Content Include="Static\images\list.gif" />
+    <Content Include="Static\images\list1.gif" />
+    <Content Include="Static\images\list2.png" />
+    <Content Include="Static\images\loginbg1.png" />
+    <Content Include="Static\images\loginbg2.png" />
+    <Content Include="Static\images\loginbg3.png" />
+    <Content Include="Static\images\loginbg4.png" />
+    <Content Include="Static\images\logininfo.png" />
+    <Content Include="Static\images\logininfo1.png" />
+    <Content Include="Static\images\logininfo2.png" />
+    <Content Include="Static\images\logininfo3.png" />
+    <Content Include="Static\images\loginlogo.png" />
+    <Content Include="Static\images\loginpassword.png" />
+    <Content Include="Static\images\loginsj.png" />
+    <Content Include="Static\images\loginuser.png" />
+    <Content Include="Static\images\logo.png" />
+    <Content Include="Static\images\minus.gif" />
+    <Content Include="Static\images\msg.png" />
+    <Content Include="Static\images\navbg.png" />
+    <Content Include="Static\images\next.gif" />
+    <Content Include="Static\images\plus.gif" />
+    <Content Include="Static\images\pre.gif" />
+    <Content Include="Static\images\px.gif" />
+    <Content Include="Static\images\red_asterisk.png" />
+    <Content Include="Static\images\righttop.gif" />
+    <Content Include="Static\images\rlist.gif" />
+    <Content Include="Static\images\search.png" />
+    <Content Include="Static\images\sj.png" />
+    <Content Include="Static\images\sub-menu-icon.png" />
+    <Content Include="Static\images\sun.png" />
+    <Content Include="Static\images\t01.png" />
+    <Content Include="Static\images\t02.png" />
+    <Content Include="Static\images\t03.png" />
+    <Content Include="Static\images\t04.png" />
+    <Content Include="Static\images\t05.png" />
+    <Content Include="Static\images\tbg.png" />
+    <Content Include="Static\images\tcbg.gif" />
+    <Content Include="Static\images\th.gif" />
+    <Content Include="Static\images\ticon.png" />
+    <Content Include="Static\images\time.png" />
+    <Content Include="Static\images\toolbg.gif" />
+    <Content Include="Static\images\topbg.gif" />
+    <Content Include="Static\images\topleft.jpg" />
+    <Content Include="Static\images\topright.jpg" />
+    <Content Include="Static\images\treeview-default-line.gif" />
+    <Content Include="Static\images\treeview-famfamfam-line.gif" />
+    <Content Include="Static\images\ub1.png" />
+    <Content Include="Static\images\uew_icon.png" />
+    <Content Include="Static\images\uew_icon_hover.png" />
+    <Content Include="Static\images\ulist.png" />
+    <Content Include="Static\images\user.png" />
+    <Content Include="Static\images\userbg.png" />
+    <Content Include="Static\images\yzmbg.png" />
+    <Content Include="Static\images\zzz.gif" />
+    <Content Include="Static\index.html" />
+    <Content Include="Static\js\ajaxfileupload.js" />
+    <Content Include="Static\js\area\areaadd.js" />
+    <Content Include="Static\js\area\areaupp.js" />
+    <Content Include="Static\js\area\myarea.js" />
+    <Content Include="Static\js\biao\biaoadd.js" />
+    <Content Include="Static\js\biao\biaoupp.js" />
+    <Content Include="Static\js\biao\mybiao.js" />
+    <Content Include="Static\js\bs\bsadd.js" />
+    <Content Include="Static\js\bs\bsupp.js" />
+    <Content Include="Static\js\bs\mybs.js" />
+    <Content Include="Static\js\cloud.js" />
+    <Content Include="Static\js\custom\customadd.js" />
+    <Content Include="Static\js\custom\customupp.js" />
+    <Content Include="Static\js\custom\mycustom.js" />
+    <Content Include="Static\js\demo.js" />
+    <Content Include="Static\js\djrz\djrzadd.js" />
+    <Content Include="Static\js\djrz\djrzupp.js" />
+    <Content Include="Static\js\djrz\mydjrz.js" />
+    <Content Include="Static\js\djsf\djsfadd.js" />
+    <Content Include="Static\js\djsf\djsfupp.js" />
+    <Content Include="Static\js\djsf\mydjsf.js" />
+    <Content Include="Static\js\djsf\mydjsf1.js" />
+    <Content Include="Static\js\djtf\djtfupp.js" />
+    <Content Include="Static\js\djtf\mydjtf.js" />
+    <Content Include="Static\js\emp\empadd.js" />
+    <Content Include="Static\js\emp\empupp.js" />
+    <Content Include="Static\js\emp\myemp.js" />
+    <Content Include="Static\js\emp\myout.js" />
+    <Content Include="Static\js\emp\VueAdd.js" />
+    <Content Include="Static\js\format+zh_CN,default,corechart.I.js" />
+    <Content Include="Static\js\house\houseadd.js" />
+    <Content Include="Static\js\house\houselook.js" />
+    <Content Include="Static\js\house\houseupp.js" />
+    <Content Include="Static\js\house\myhouse.js" />
+    <Content Include="Static\js\ht\htadd.js" />
+    <Content Include="Static\js\ht\htupp.js" />
+    <Content Include="Static\js\ht\myht.js" />
+    <Content Include="Static\js\index\myindex.js" />
+    <Content Include="Static\js\jquery-1.8.3.js" />
+    <Content Include="Static\js\jquery.ba-resize.min.js" />
+    <Content Include="Static\js\jquery.cookie.js" />
+    <Content Include="Static\js\jquery.gvChart-1.0.1.min.js" />
+    <Content Include="Static\js\jquery.idTabs.min.js" />
+    <Content Include="Static\js\jquery.js" />
+    <Content Include="Static\js\jquery.messager.js" />
+    <Content Include="Static\js\jquery.treeview.js" />
+    <Content Include="Static\js\jsapi.js" />
+    <Content Include="Static\js\kindeditor.js" />
+    <Content Include="Static\js\My97DatePicker\calendar.js" />
+    <Content Include="Static\js\My97DatePicker\lang\en.js" />
+    <Content Include="Static\js\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Static\js\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Static\js\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Static\js\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Static\js\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Static\js\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Static\js\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Static\js\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Static\js\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Static\js\My97DatePicker\WdatePicker.js" />
+    <Content Include="Static\js\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Static\js\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Static\js\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Static\js\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Static\js\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Static\js\myjs\jsadd.js" />
+    <Content Include="Static\js\myjs\jsupp.js" />
+    <Content Include="Static\js\myjs\myjs.js" />
+    <Content Include="Static\js\part\mydepty.js" />
+    <Content Include="Static\js\part\partadd.js" />
+    <Content Include="Static\js\part\partupp.js" />
+    <Content Include="Static\js\PIE.htc" />
+    <Content Include="Static\js\plugins\about.html" />
+    <Content Include="Static\js\plugins\emoticons\etc_01.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_02.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_03.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_04.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_05.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_06.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_07.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_08.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_09.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_10.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_11.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_12.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_13.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_14.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_15.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_16.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_17.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_18.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_19.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_20.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_21.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_22.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_23.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_24.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_25.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_26.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_27.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_28.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_29.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_30.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_31.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_32.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_33.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_34.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_35.gif" />
+    <Content Include="Static\js\plugins\emoticons\etc_36.gif" />
+    <Content Include="Static\js\plugins\flash.html" />
+    <Content Include="Static\js\plugins\image.html" />
+    <Content Include="Static\js\plugins\link.html" />
+    <Content Include="Static\js\plugins\media.html" />
+    <Content Include="Static\js\plugins\plainpaste.html" />
+    <Content Include="Static\js\plugins\remote_image.html" />
+    <Content Include="Static\js\plugins\wordpaste.html" />
+    <Content Include="Static\js\right\myright.js" />
+    <Content Include="Static\js\select-ui.min.js" />
+    <Content Include="Static\js\shour\myshour.js" />
+    <Content Include="Static\js\shour\shouradd.js" />
+    <Content Include="Static\js\shour\shourupp.js" />
+    <Content Include="Static\js\showdate.js" />
+    <Content Include="Static\js\skins\default.css" />
+    <Content Include="Static\js\skins\default.gif" />
+    <Content Include="Static\js\skins\div.gif" />
+    <Content Include="Static\js\skins\dl.gif" />
+    <Content Include="Static\js\skins\editor.css" />
+    <Content Include="Static\js\skins\ol.gif" />
+    <Content Include="Static\js\skins\p.gif" />
+    <Content Include="Static\js\skins\tinymce.css" />
+    <Content Include="Static\js\skins\tinymce.gif" />
+    <Content Include="Static\js\skins\ul.gif" />
+    <Content Include="Static\js\sort\mysort.js" />
+    <Content Include="Static\js\sort\sortadd.js" />
+    <Content Include="Static\js\sort\sortupp.js" />
+    <Content Include="Static\js\vue.js" />
+    <Content Include="Static\js\zc\myzc.js" />
+    <Content Include="Static\js\zc\zcadd.js" />
+    <Content Include="Static\js\zc\zcupp.js" />
+    <Content Include="Static\js\zhichu\myzhichu.js" />
+    <Content Include="Static\js\zhichu\zhichuadd.js" />
+    <Content Include="Static\js\zhichu\zhichuupp.js" />
+    <Content Include="Static\js\zsr\all1.js" />
+    <Content Include="Static\js\zsr\all2.js" />
+    <Content Include="Static\js\zsr\dq.js" />
+    <Content Include="Static\js\zsr\myma.js" />
+    <Content Include="Static\layer\css\min.css" />
+    <Content Include="Static\layer\css\min_123.css" />
+    <Content Include="Static\layer\extend\layer.ext.js" />
+    <Content Include="Static\layer\images\checkbox.png" />
+    <Content Include="Static\layer\images\checkbox_01.gif" />
+    <Content Include="Static\layer\images\radio.png" />
+    <Content Include="Static\layer\images\sicon.png" />
+    <Content Include="Static\layer\jquery-hcheckbox.js" />
+    <Content Include="Static\layer\jquery.js" />
+    <Content Include="Static\layer\jquery.min.js" />
+    <Content Include="Static\layer\layer.js" />
+    <Content Include="Static\layer\skin\default\icon-ext.png" />
+    <Content Include="Static\layer\skin\default\icon.png" />
+    <Content Include="Static\layer\skin\default\loading-0.gif" />
+    <Content Include="Static\layer\skin\default\loading-1.gif" />
+    <Content Include="Static\layer\skin\default\loading-2.gif" />
+    <Content Include="Static\layer\skin\layer.css" />
+    <Content Include="Static\layer\skin\layer.ext.css" />
+    <Content Include="Static\leaseExp.html" />
+    <Content Include="Static\left.html" />
+    <Content Include="Static\login.html" />
+    <Content Include="Static\policy.html" />
+    <Content Include="Static\position.html" />
+    <Content Include="Static\rent.html" />
+    <Content Include="Static\rentRevenue.html" />
+    <Content Include="Static\reportLoss.html" />
+    <Content Include="Static\revenue.html" />
+    <Content Include="Static\TableHistory.html" />
+    <Content Include="Static\Termination.html" />
+    <Content Include="Static\top.html" />
+    <Content Include="Static\tree.html" />
+    <Content Include="Static\typeInfo.html" />
+    <Content Include="layui\font\iconfont.eot" />
+    <Content Include="layui\font\iconfont.ttf" />
+    <Content Include="layui\font\iconfont.woff" />
+    <Content Include="layui\font\iconfont.woff2" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="vue.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\PersonManager\Index.cshtml" />
+    <Content Include="Views\PersonManager\Add.cshtml" />
+    <Content Include="Views\PersonManager\GetPersonList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeftController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\TopController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Left\Index.cshtml" />
+    <Content Include="Views\Top\Index.cshtml" />
+    <Content Include="Views\Footer\Index.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Add.cshtml" />
+    <Content Include="Views\Position\Position.cshtml" />
+    <Content Include="Views\Position\UpdatePosition.cshtml" />
+    <Content Include="Views\Employee\Employee.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap.css.map" />
+    <Content Include="Static\bootstrap-dist\css\bootstrap.min.css.map" />
+    <Content Include="Static\bootstrap-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Static\bootstrap-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Static\bootstrap-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Static\bootstrap-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Emploeey\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{c0f87f88-d63b-4813-a6f5-fb73ebce30fb}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3b652f77-9430-46ff-b056-c7e6a0e5197e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{e0b2911c-9fcf-4f6c-b1d0-a2b68de5d7e7}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>29908</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:29908/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
